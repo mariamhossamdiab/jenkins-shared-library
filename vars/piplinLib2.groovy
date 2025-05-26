@@ -7,12 +7,13 @@ def call() {
             IMAGE_NAME = 'mariamhossam00/jenkins-library'
         }
 
-       stage('Build & Dockerize') {
-    steps {
-        echo 'Building Docker image for Python app...'
-        sh 'docker build -t my-python-app .'
-    }
-}
+        stages {
+            stage('Build & Dockerize') {
+                steps {
+                    echo 'Building Docker image for Python app...'
+                    sh 'docker build -t my-python-app .'
+                }
+            }
 
             stage('Push Docker Image') {
                 steps {
@@ -22,4 +23,6 @@ def call() {
             }
         }
     }
+}
+
 
